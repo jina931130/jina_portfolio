@@ -66,11 +66,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .t-caption { font-size: 14px; line-height: 1.5; margin: 0; }
 .t-overline {
   font-family: var(--font-en); font-size: 13px; font-weight: 500;
-  letter-spacing: 6px; text-transform: uppercase; line-height: 1.4; margin: 0;
+  letter-spacing: 0.78px; text-transform: uppercase; line-height: 1.4; margin: 0;
 }
 .t-tag {
   font-family: var(--font-en); font-size: 12px; font-weight: 500;
-  letter-spacing: 6px; text-transform: uppercase; line-height: 1;
+  letter-spacing: 0.72px; text-transform: uppercase; line-height: 1;
 }
 .muted { color: var(--text-secondary); }
 .dim   { color: var(--text-tertiary); }
@@ -131,7 +131,7 @@ section { scroll-margin-top: calc(var(--gnb-h) + 24px); }
 }
 .lang a {
   font-family: var(--font-en); font-size: 12px; font-weight: 500;
-  letter-spacing: 2px; text-transform: uppercase;
+  letter-spacing: 0.72px; text-transform: uppercase;
   padding: 7px 12px; border-radius: 999px; color: var(--text-secondary); opacity: .6;
 }
 .lang a.on { background: var(--bg-inverse); color: var(--text-inverse); opacity: 1; }
@@ -141,7 +141,7 @@ section { scroll-margin-top: calc(var(--gnb-h) + 24px); }
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--bg-inverse); color: var(--text-inverse);
   font-family: var(--font-en); font-size: 12px; font-weight: 500;
-  letter-spacing: 6px; text-transform: uppercase;
+  letter-spacing: 0.72px; text-transform: uppercase;
   padding: 13px 20px; border-radius: 999px;
 }
 .cta-pill:hover { opacity: .88; }
@@ -173,7 +173,9 @@ section { scroll-margin-top: calc(var(--gnb-h) + 24px); }
 /* vertical cards (KR) */
 .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .card {
-  position: relative; display: flex; flex-direction: column;
+  position: relative; display: grid;
+  grid-template-rows: auto 1fr auto auto;   /* top · spacer · 태그+제목 · 설명 */
+  row-gap: 0;
   border-radius: 24px; padding: 32px 28px; min-height: 480px;
   transition: transform .2s ease, box-shadow .2s ease;
 }
@@ -182,17 +184,19 @@ section { scroll-margin-top: calc(var(--gnb-h) + 24px); }
 .card .num {
   width: 40px; height: 40px; border-radius: 999px; background: rgba(255,255,255,.55);
   display: grid; place-items: center;
-  font-family: var(--font-en); font-size: 12px; letter-spacing: 2px;
+  font-family: var(--font-en); font-size: 12px; letter-spacing: 0.72px;
 }
 .card .arrow { width: 26px; height: 26px; }
-.card .body { margin-top: auto; }
+.card .body { grid-row: 3; display: flex; flex-direction: column; }
+.card .desc-wrap { grid-row: 4; margin-top: 18px; min-height: 96px; }
 .card .tag {
-  display: inline-flex; background: var(--bg-inverse); color: var(--text-inverse);
-  font-family: var(--font-en); font-size: 12px; font-weight: 500; letter-spacing: 3px;
-  text-transform: uppercase; padding: 7px 12px; border-radius: 999px; margin-bottom: 14px;
+  display: inline-flex; align-self: flex-start;
+  background: var(--bg-inverse); color: var(--text-inverse);
+  font-family: var(--font-en); font-size: 12px; font-weight: 500; letter-spacing: 0.72px;
+  text-transform: uppercase; padding: 8px 13px; border-radius: 999px; margin-bottom: 14px;
 }
 .card .title { font-size: 22px; font-weight: 500; line-height: 1.45; letter-spacing: -0.5px; }
-.card .desc { margin-top: 12px; font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+.card .desc { font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
 .card.review { background: var(--project-review); }
 .card.tago   { background: var(--project-tago); }
 .card.iptv   { background: var(--project-iptv); }
@@ -212,12 +216,12 @@ section { scroll-margin-top: calc(var(--gnb-h) + 24px); }
 .card-wide:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(17,17,17,.10); }
 .card-wide .num {
   width: 40px; height: 40px; border-radius: 999px; background: rgba(255,255,255,.55);
-  display: grid; place-items: center; font-family: var(--font-en); font-size: 12px; letter-spacing: 2px;
+  display: grid; place-items: center; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.72px;
 }
 .card-wide .tag {
   display: inline-flex; background: var(--bg-inverse); color: var(--text-inverse);
-  font-family: var(--font-en); font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
-  text-transform: uppercase; padding: 6px 11px; border-radius: 999px; margin-bottom: 10px;
+  font-family: var(--font-en); font-size: 12px; font-weight: 500; letter-spacing: 0.72px;
+  text-transform: uppercase; padding: 7px 12px; border-radius: 999px; margin-bottom: 10px;
 }
 .card-wide .title { font-size: 22px; font-weight: 500; line-height: 1.4; letter-spacing: -0.5px; }
 .card-wide .desc { margin-top: 8px; font-size: 15px; color: var(--text-secondary); }
@@ -236,7 +240,7 @@ section { scroll-margin-top: calc(var(--gnb-h) + 24px); }
   max-width: var(--content); margin: 0 auto; padding: 44px 20px;
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
 }
-.footer-grid .t-overline { font-size: 11px; letter-spacing: 4px; color: var(--text-tertiary); margin-bottom: 12px; }
+.footer-grid .t-overline { font-size: 11px; letter-spacing: 0.66px; color: var(--text-tertiary); margin-bottom: 12px; }
 .footer-grid a:hover { text-decoration: underline; }
 .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
 
