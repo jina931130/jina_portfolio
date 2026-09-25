@@ -92,6 +92,10 @@
 .f111,.f203{border:0}
 .f111::after{content:"";position:absolute;inset:0;border:1px solid #dde1d5;border-radius:18px;pointer-events:none;z-index:2}
 .f203::after{content:"";position:absolute;inset:0;border:1px solid rgba(221,221,221,0.5);border-radius:5px;pointer-events:none;z-index:2}
+/* 10. Next Project 배너 → TA:GO */
+.f395{cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.f395:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(17,17,17,.10)}
+.f395:focus-visible{outline:2px solid #0f4b35;outline-offset:3px}
 /* icon frames */
 .f52,.f82,.f94,.f146,.f159,.f164,.f175,.f194,.f207,.f228,.f379,.f390{background-repeat:no-repeat;background-position:center;background-size:100% 100%}
 </style>
@@ -187,6 +191,16 @@
   });
   var w=document.createTreeWalker(stage,NodeFilter.SHOW_TEXT),n;
   while((n=w.nextNode())){if(n.data.indexOf("\u2028")>=0)n.data=n.data.replace(/\u2028/g,"\n");}
+})();
+/* Next Project 배너 → tago.html */
+(function(){
+  var card=document.querySelector('.rv-stage [data-s="next"] .f395');
+  if(!card)return;
+  card.setAttribute('role','link');card.setAttribute('tabindex','0');
+  card.setAttribute('aria-label','다음 프로젝트: TA:GO');
+  var go=function(){location.href='tago.html';};
+  card.addEventListener('click',go);
+  card.addEventListener('keydown',function(e){if(e.key==='Enter')go();});
 })();
 /* guideline chips "근거 · NN ..." -> section "NN · ..." (handled by site.js data-jump) */
 (function(){
