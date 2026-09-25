@@ -14,6 +14,9 @@
 .pg-stage{position:absolute;top:0;left:50%;width:1440px;margin-left:-720px;transform-origin:top center}
 .pg-stage p{margin:0}
 .pg-stage b{display:block}
+/* stroke overlays are the last child, so DOM order already puts them above their own frame;
+   z-index would lift them above later sibling shapes (e.g. timeline dots) */
+.pg-stage b{z-index:auto!important}
 .pg-page .site-footer{margin-top:0}
 .pg-stage .lt{text-box:trim-both cap alphabetic}
 @supports not (text-box:trim-both cap alphabetic){.h0{line-height:8.4px}.h62{line-height:8.4px}.h9g{line-height:8.4px}.hbh{line-height:8.4px}.hbk{line-height:8.4px}.hn4{line-height:8.4px}.hnf{line-height:8.4px}}

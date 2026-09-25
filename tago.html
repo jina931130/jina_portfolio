@@ -16,6 +16,9 @@
 .tg-stage{position:absolute;top:0;left:50%;width:1440px;margin-left:-720px;transform-origin:top center}
 .tg-stage p{margin:0}
 .tg-stage b{display:block}
+/* stroke overlays are the last child, so DOM order already puts them above their own frame;
+   z-index would lift them above later sibling shapes (e.g. timeline dots) */
+.tg-stage b{z-index:auto!important}
 .tg-page .site-footer{margin-top:0}
 /* Figma leading trim (cap height) */
 .tg-stage .lt{text-box:trim-both cap alphabetic}
